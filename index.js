@@ -15,15 +15,15 @@ for (let desc of descriptions.values()) {
     desc.innerHTML = content
 }
 
-for (let rating of ratings) {
-    let ratingValue = parseFloat(rating.innerText);
-    if (ratingValue > 4.7) {
-        // rating.style.fontWeight="bold"
-        // rating.style.color = "green";
-        rating.classList.add("high-rating");
-        rating.classList.remove("value");
-    }
-}
+// for (let rating of ratings) {
+//     let ratingValue = parseFloat(rating.innerText);
+//     if (ratingValue > 4.7) {
+//         // rating.style.fontWeight="bold"
+//         // rating.style.color = "green";
+//         rating.classList.add("high-rating");
+//         rating.classList.remove("value");
+//     }
+// }
 
 // const newElement = document.createElement("div");
 // newElement.innerText = `${numberParks} exciting parks to visit`
@@ -85,10 +85,8 @@ nameSorter.addEventListener("click", (event) => {
 })
 
 const sortByRating = (parkA, parkB) => {
-    let parkARating = parseFloat(parkA.querySelector(".rating-display > .value").innerText);
+    const parkARating = parseFloat(parkA.querySelector(".rating-display > .value").innerText);
     const parkBRating = parseFloat(parkB.querySelector(".rating-display > .value").innerText);
-    console.log(parkB)
-    console.log(parkBRating)
     if (parkARating > parkBRating) {
         return -1;
     } else if (parkARating < parkBRating) {
@@ -104,11 +102,9 @@ ratingSorter.addEventListener("click", (event) => {
     let main = document.querySelector("main")
     const parksList = main.querySelectorAll(".park-display")
     const parksArray = Array.from(parksList)
-    main = ""
+    main.innerHTML = ""
     parksArray.sort(sortByRating)
-    console.log(parksArray)
     parksArray.forEach((park) => {
-        main.appendChild(park)
+        main.appendChild(park);
     })
-
 })
